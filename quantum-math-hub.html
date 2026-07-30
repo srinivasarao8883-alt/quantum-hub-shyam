@@ -1,0 +1,77 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="A colourful Grade 7 mathematics learning hub.">
+  <title>Quantum Hub / Shyam Kumar</title>
+  <style>
+    :root { --deep:#05070f; --card:rgba(13,20,38,.72); --blue:#00f0ff; --purple:#bd00ff; --amber:#ffaa00; --text:#e2e8f0; --muted:#9aacc2; --border:rgba(0,240,255,.18); }
+    * { box-sizing:border-box; }
+    html { scroll-behavior:smooth; }
+    body { margin:0; color:var(--text); background:var(--deep); font-family:Inter,ui-sans-serif,system-ui,-apple-system,"Segoe UI",sans-serif; overflow-x:hidden; line-height:1.6; }
+    body::before { content:""; position:fixed; inset:0; z-index:-2; background-image:linear-gradient(rgba(0,240,255,.035) 1px,transparent 1px),linear-gradient(90deg,rgba(0,240,255,.035) 1px,transparent 1px); background-size:40px 40px; }
+    .orb { position:fixed; width:330px; height:330px; border-radius:50%; filter:blur(115px); opacity:.18; pointer-events:none; z-index:-1; }
+    .orb.one { background:var(--blue); top:-150px; left:-120px; } .orb.two { background:var(--purple); right:-140px; top:38%; }
+    .hero { min-height:100vh; display:grid; place-items:center; padding:32px 24px; position:relative; overflow:hidden; background:radial-gradient(circle at center,#121942 0%,var(--deep) 65%); text-align:center; }
+    .hero-content { position:relative; z-index:1; max-width:850px; }
+    .tag { display:inline-block; padding:6px 20px; border:1px solid rgba(0,240,255,.35); border-radius:999px; color:var(--blue); background:rgba(0,240,255,.08); font-size:.82rem; font-weight:800; letter-spacing:.2em; text-transform:uppercase; animation:pulse 2s infinite ease-in-out; }
+    h1 { margin:18px 0 8px; font-size:clamp(3rem,9vw,6.5rem); line-height:.98; letter-spacing:-.065em; background:linear-gradient(135deg,#fff 35%,var(--blue)); -webkit-background-clip:text; background-clip:text; color:transparent; }
+    .hero p { max-width:620px; margin:0 auto; color:var(--muted); font-size:clamp(1.05rem,2.5vw,1.25rem); }
+    .button { display:inline-block; margin-top:30px; padding:15px 35px; border:0; border-radius:999px; color:#02131a; background:linear-gradient(135deg,#0072ff,var(--blue)); font-size:1rem; font-weight:900; text-decoration:none; cursor:pointer; box-shadow:0 0 25px rgba(0,240,255,.35); transition:transform .2s,box-shadow .2s; }
+    .button:hover,.button:focus-visible { transform:translateY(-3px); box-shadow:0 0 34px rgba(0,240,255,.6); }
+    .float { position:absolute; color:var(--blue); font-family:ui-monospace,Consolas,monospace; font-weight:800; opacity:.38; text-shadow:0 0 9px var(--blue); animation:rise 9s infinite linear; pointer-events:none; }
+    .f1{left:9%;animation-delay:0s}.f2{left:42%;animation-delay:2s}.f3{right:10%;animation-delay:4s}.f4{left:24%;animation-delay:6s}.f5{right:29%;animation-delay:7s}
+    .wrap { width:min(940px,calc(100% - 36px)); margin:0 auto; padding:72px 0 40px; }
+    .identity { text-align:center; margin-bottom:58px; } .identity h2 { margin:0; font-size:clamp(2.5rem,7vw,4.3rem); line-height:1; background:linear-gradient(90deg,var(--blue),var(--purple)); -webkit-background-clip:text; background-clip:text; color:transparent; }
+    .identity p { margin:14px 0 0; color:var(--muted); font-size:1.08rem; }
+    .section-title { margin:66px 0 24px; padding-left:13px; border-left:5px solid var(--blue); font-size:clamp(1.7rem,4vw,2.25rem); }
+    .card { margin:22px 0; padding:clamp(23px,5vw,36px); border:1px solid var(--border); border-radius:18px; background:var(--card); box-shadow:0 14px 40px rgba(0,0,0,.2); backdrop-filter:blur(12px); transition:transform .2s,border-color .2s; }
+    .card:hover { transform:translateY(-3px); border-color:rgba(0,240,255,.38); }
+    .card h3 { margin:0 0 14px; color:var(--blue); font-size:1.4rem; } .card p { color:#c6d1df; }
+    .math-box,.screen { margin-top:18px; padding:20px; border-radius:10px; background:#03050a; font-family:ui-monospace,Consolas,monospace; }
+    .math-box { border-left:4px solid var(--amber); color:var(--amber); text-align:center; font-size:1.3rem; font-weight:800; }
+    .table-scroll { overflow-x:auto; border:1px solid var(--border); border-radius:10px; } table { width:100%; min-width:560px; border-collapse:collapse; text-align:center; } th { padding:15px; background:#070a12; color:var(--blue); font-size:.85rem; text-transform:uppercase; } td { padding:14px; border-top:1px solid var(--border); } td:first-child { color:var(--purple); font-weight:800; background:rgba(0,0,0,.22); }
+    .lab { border:2px solid var(--blue); } .generate { padding:14px 24px; border:0; border-radius:9px; background:linear-gradient(135deg,var(--amber),#ff9700); color:#180e00; font-weight:900; font-size:1rem; cursor:pointer; } .generate:hover,.generate:focus-visible { filter:brightness(1.12); }
+    .screen { min-height:112px; border-left:4px solid var(--blue); color:var(--blue); white-space:pre-wrap; }
+    .solution-label { display:block; margin-top:18px; color:var(--muted); font-size:.9rem; } textarea { width:100%; min-height:120px; margin-top:7px; padding:12px; resize:vertical; border:1px solid var(--border); border-radius:8px; background:#04060b; color:var(--text); font:inherit; } .email { display:inline-block; margin-top:14px; color:var(--purple); font-weight:800; }
+    .note { margin-top:10px; color:var(--muted); font-size:.84rem; } footer { margin-top:100px; padding:28px 0; border-top:1px solid var(--border); color:var(--muted); text-align:center; font-size:.92rem; }
+    @keyframes pulse { 50% { box-shadow:0 0 20px rgba(0,240,255,.35); border-color:var(--blue); } } @keyframes rise { 0%{transform:translateY(65vh) rotate(0);opacity:0}15%,85%{opacity:.38}100%{transform:translateY(-60vh) rotate(14deg);opacity:0} }
+    @media (prefers-reduced-motion:reduce){*,*::before,*::after{animation-duration:.01ms!important;scroll-behavior:auto!important;transition-duration:.01ms!important}}
+  </style>
+</head>
+<body>
+  <div class="orb one"></div><div class="orb two"></div>
+  <section class="hero" aria-labelledby="welcome-title">
+    <span class="float f1">x² + y²</span><span class="float f2">3x + 2 = 7</span><span class="float f3">sin²(θ) + cos²(θ) = 1</span><span class="float f4">15² − 8² = 161</span><span class="float f5">4y + 3 = 13</span>
+    <div class="hero-content"><span class="tag">Quantum Core</span><h1 id="welcome-title">Quantum Hub</h1><p>Explore algebra, geometry, and mathematical ideas with Shyam Kumar.</p><a class="button" href="#hub">Dive into Math</a></div>
+  </section>
+  <main id="hub" class="wrap">
+    <header class="identity"><h2>Quantum Hub / Shyam Kumar</h2><p>NCERT Grade 7 Core Engine · Higher Algebra &amp; Trigonometry Architect</p></header>
+    <h2 class="section-title">Matrix Fields</h2>
+    <article class="card"><h3>// ALGEBRA CORE</h3><p><strong>Meaning:</strong> Algebra uses variables to represent unknown values. It helps solve equations and understand mathematical relationships.</p><div class="math-box">4x + 15 = 24</div></article>
+    <article class="card"><h3>// TRIGONOMETRY VECTOR</h3><p><strong>Meaning:</strong> Trigonometry studies the relationships between the angles and sides of triangles.</p><div class="table-scroll"><table><thead><tr><th>Ratio (θ)</th><th>0°</th><th>30°</th><th>45°</th><th>60°</th><th>90°</th></tr></thead><tbody><tr><td>sin(θ)</td><td>0</td><td>1/2</td><td>√2/2</td><td>√3/2</td><td>1</td></tr><tr><td>cos(θ)</td><td>1</td><td>√3/2</td><td>√2/2</td><td>1/2</td><td>0</td></tr><tr><td>tan(θ)</td><td>0</td><td>1/√3</td><td>1</td><td>√3</td><td style="color:#ff647c">Undefined</td></tr></tbody></table></div></article>
+    <h2 class="section-title">System Core Simulation</h2>
+    <section class="card lab"><h3 style="color:#fff">NCERT 7th Grade Question Generator</h3><p>Generate a standalone Grade 7 math question, work it out, then reveal the answer to check yourself.</p><button class="generate" id="generate" type="button">Generate a Math Question</button> <button class="generate" id="reveal" type="button" hidden>Show Answer</button><div id="display" class="screen" role="status">SYSTEM READY...\nClick the button above to generate a math question.</div><label class="solution-label" for="solution">My step-by-step solution</label><textarea id="solution" placeholder="1.&#10;2.&#10;3.&#10;&#10;Final answer:"></textarea><a id="email" class="email" href="mailto:?subject=Math%20solution">Prepare solution email</a><div class="note">Set the recipient address in the link if you want submissions sent directly to a specific inbox.</div></section>
+    <footer>© 2026 Shyam Kumar Quantum Portfolio Network. All rights reserved.<br><span style="color:var(--blue);font-weight:800">Co-powered by Cyborc</span></footer>
+  </main>
+  <script>
+    const questions = [
+      { question:'Simple Equations: Solve for x: 3x = 27.', answer:'x = 9\n\nDivide both sides by 3: x = 27 ÷ 3 = 9.' },
+      { question:'Integers: Find the value of (−12) + (−8) + 20.', answer:'0\n\n(−12) + (−8) = −20, then −20 + 20 = 0.' },
+      { question:'Fractions & Decimals: Calculate 2/5 of 40.', answer:'16\n\n2/5 × 40 = 2 × 8 = 16.' },
+      { question:'Lines & Angles: If two lines intersect and one angle is 55°, what is the value of its vertically opposite angle?', answer:'55°\n\nVertically opposite angles are equal.' },
+      { question:'Triangle Properties: A right-angled triangle has a base of 6 cm and height of 8 cm. Find the hypotenuse.', answer:'10 cm\n\nBy Pythagoras: √(6² + 8²) = √100 = 10 cm.' },
+      { question:'Simple Equations: Solve for y: 4y + 3 = 19.', answer:'y = 4\n\nSubtract 3: 4y = 16. Divide by 4: y = 4.' },
+      { question:'Area of Triangle: Find the area of a triangle whose base is 12 cm and height is 7 cm.', answer:'42 cm²\n\nArea = ½ × base × height = ½ × 12 × 7 = 42 cm².' },
+      { question:'Rational Numbers: Reduce the fraction −36/54 to its simplest form.', answer:'−2/3\n\nDivide the numerator and denominator by their highest common factor, 18.' }
+    ];
+    let current = ''; let currentAnswer = '';
+    const display = document.querySelector('#display'); const solution = document.querySelector('#solution'); const email = document.querySelector('#email'); const reveal = document.querySelector('#reveal');
+    function updateEmail() { const subject = encodeURIComponent('My solution: ' + current); const body = encodeURIComponent('Hi Shyam Kumar,\n\nQuestion:\n' + current + '\n\nMy step-by-step solution:\n' + solution.value); email.href = 'mailto:?subject=' + subject + '&body=' + body; }
+    document.querySelector('#generate').addEventListener('click', () => { const item = questions[Math.floor(Math.random() * questions.length)]; current = item.question; currentAnswer = item.answer; display.textContent = 'GENERATED QUESTION:\n\n' + current; solution.value = ''; reveal.hidden = false; updateEmail(); });
+    reveal.addEventListener('click', () => { display.textContent = 'GENERATED QUESTION:\n\n' + current + '\n\nANSWER & WORKING:\n\n' + currentAnswer; });
+    solution.addEventListener('input', updateEmail); email.addEventListener('click', updateEmail);
+  </script>
+</body>
+</html>
